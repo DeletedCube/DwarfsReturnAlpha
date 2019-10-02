@@ -8,9 +8,6 @@ public class TileSpawner : MonoBehaviour
     public GameManager Manager; //то же самое
     public HexTile Prefab; 
 
-    //словарь в который записываются кубические координаты гексов и возможность к ним образаться
-    Dictionary<Vector3Int, HexTile> Tiles = new Dictionary<Vector3Int, HexTile>();
-
     //создание нового гекса в сцене
     public HexTile AddInstance(Vector3Int _cubePosition)
     {
@@ -43,7 +40,7 @@ public class TileSpawner : MonoBehaviour
     {
         for (int i = 0; i < 6; i++)
         {
-            Vector3Int pos = _hexPos + Neighbors[i];
+            Vector3Int pos = _hexPos + MapStorage.Neighbors[i];
             AddInstance(pos);
         }
     }
@@ -51,31 +48,20 @@ public class TileSpawner : MonoBehaviour
     //связвает гекс с координатами
     public void SetHexToCoords(Vector3Int _pos, HexTile tile)
     {
-        Tiles[_pos] = tile;
+        MapStorage.Tiles[_pos] = tile;
     }
 
     //проверка на занятость тайла
     public bool CheckCoords(Vector3Int _pos)
     {
-        return Tiles.ContainsKey(_pos);
+        return MapStorage.Tiles.ContainsKey(_pos);
     }
 
     //получить доступ к тайлу по координатам
     public HexTile GetTileAtCoords(Vector3Int _pos)
     {
         HexTile tile = null;
-        Tiles.TryGetValue(_pos, out tile);
+        MapStorage.Tiles.TryGetValue(_pos, out tile);
         return tile;
     }
-
-    //перечисление векторов соседей относительно нулевого тайла, оно же направление от 0 до 5
-    public Vector3Int[] Neighbors = new Vector3Int[]
-    {
-        new Vector3Int(+1, -1,  0),
-        new Vector3Int(+1,  0, -1),
-        new Vector3Int( 0, +1, -1),
-        new Vector3Int(-1, +1,  0),
-        new Vector3Int(-1,  0, +1),
-        new Vector3Int( 0, -1, +1),
-    };
 }

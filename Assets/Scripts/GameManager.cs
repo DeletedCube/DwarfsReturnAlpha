@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour
         int maxCount = 0;
         for (int i = 0; i < 3; i++) 
         {
-            Count[i] += CountTilesInDirection(_curHex, Spawner.Neighbors[i], _turnSide); //проверка по оси (направление i)
-            Count[i] += CountTilesInDirection(_curHex, Spawner.Neighbors[i + 3], _turnSide); //и в обратную сторону
+            Count[i] += CountTilesInDirection(_curHex, MapStorage.Neighbors[i], _turnSide); //проверка по оси (направление i)
+            Count[i] += CountTilesInDirection(_curHex, MapStorage.Neighbors[i + 3], _turnSide); //и в обратную сторону
 
             maxCount = Mathf.Max(maxCount, Count[i]);//выбирает максимальное значение на оси
         }

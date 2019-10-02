@@ -16,20 +16,10 @@ public class HexTile : MonoBehaviour, IPointerClickHandler
 
     //позиция при установке в сцене и флаг "несхоженного" гекса
     public void PlaceHex(Vector3Int _cubePosition)
-    {
-        this.transform.position = HexToWorld(_cubePosition.x, _cubePosition.y, _cubePosition.z);
+    {        
+        this.transform.position = MapStorage.HexToWorld(_cubePosition.x, _cubePosition.y, _cubePosition.z);
         CubePosition = _cubePosition;
         Used = false;
-    }
-
-    //преобразование кубических координат в мировые
-    public static Vector3 HexToWorld(int x, int y, int z)
-    {
-        y = -x - z;
-        float horizPosition = 1.5f * x;
-        float vertPosition = Mathf.Sqrt(3.0f) * (x * 0.5f + y);
-
-        return new Vector3(horizPosition, 0.0f, vertPosition);
     }
 
     //действия при клике
@@ -38,7 +28,7 @@ public class HexTile : MonoBehaviour, IPointerClickHandler
         if (!Used)
         {
             Used = true; //гекс становится сходившим
-            HexRenderer.material = Turn.GetCurrentTurnMaterial(); //устанавливает материал, относительно текущего хода
+            HexRenderer.material = MapStorage.GetCurrentTurnMaterial(); //устанавливает материал, относительно текущего хода
             Side = Turn.Current; //гекс запоминает свою сторону
             Manager.LetsWin(CubePosition, Side); //проверка на победу
 
