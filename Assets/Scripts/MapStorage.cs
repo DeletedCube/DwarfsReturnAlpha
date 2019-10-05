@@ -19,6 +19,7 @@ public static class MapStorage
         materials.Add(Turn.Side.SideB, matB);
     }
 
+
     public static Material GetCurrentTurnMaterial()
     {
         Material mat;
@@ -46,4 +47,13 @@ public static class MapStorage
         new Vector3Int(-1,  0, +1),
         new Vector3Int( 0, -1, +1),
     };
+
+   /* public static Vector3 NeigbourIndexToEuler(int neighbor)
+    {
+
+
+        return 
+    }*/
+
+
 }

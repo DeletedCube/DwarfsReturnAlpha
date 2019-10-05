@@ -5,14 +5,13 @@ using UnityEngine;
 public class TileSpawner : MonoBehaviour
 {
     public TileSpawner Spawner; //ссылается на себя, чтобы потом передавать новым гексам
-    public GameManager Manager; //то же самое
-    public HexTile Prefab; 
+    public HexTile Prefab;
 
     //создание нового гекса в сцене
     public HexTile AddInstance(Vector3Int _cubePosition)
     {
         //проверка на соответсвие кубическим координатам
-        if (_cubePosition.x + _cubePosition.y + _cubePosition.z != 0) 
+        if (_cubePosition.x + _cubePosition.y + _cubePosition.z != 0)
         {
             Debug.LogError($"Vector3Int {_cubePosition} is not suitable for cubic coordinates");
             return null;
@@ -28,7 +27,6 @@ public class TileSpawner : MonoBehaviour
 
             newHexTile.PlaceHex(_cubePosition); //ставит тайл на позицию
             newHexTile.Spawner = Spawner; //записывает ему себя
-            newHexTile.Manager = Manager; //то же
             SetHexToCoords(_cubePosition, newHexTile); //записывает координаты в словарь
 
             return newHexTile;

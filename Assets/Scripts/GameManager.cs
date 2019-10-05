@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
         LetsStart();
     }
 
-    // ставит начальные гексы, имитирует нажатие на них
     void LetsStart()
     {
         HexTile tile1 = Spawner.AddInstance(new Vector3Int(0, 0, 0));
