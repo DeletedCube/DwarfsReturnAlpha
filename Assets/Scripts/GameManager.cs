@@ -15,9 +15,9 @@ public class GameManager : MonoBehaviour
     void LetsStart()
     {
         HexTile tile1 = Spawner.AddInstance(new Vector3Int(0, 0, 0));
-        HexTile tile2 = Spawner.AddInstance(new Vector3Int(1, -1, 0));
-        tile1.OnPointerClick(null);
-        tile2.OnPointerClick(null);
+       // HexTile tile2 = Spawner.AddInstance(new Vector3Int(1, -1, 0));
+       // tile1.OnPointerClick(null);
+       // tile2.OnPointerClick(null);
     }
 
     //проверка на выигрыш
