@@ -18,8 +18,6 @@ public static class MapStorage
         Material matB = Resources.Load<Material>(Turn.Side.SideB.ToString());
         materials.Add(Turn.Side.SideB, matB);
     }
-
-
     public static Material GetCurrentTurnMaterial()
     {
         Material mat;
@@ -29,11 +27,11 @@ public static class MapStorage
 
     public static Dictionary<Vector3Int, HexTile> Tiles = new Dictionary<Vector3Int, HexTile>();
 
-    public static Vector3 HexToWorld(int x, int y, int z)
+    public static Vector3 HexToWorld(Vector3Int cubePosition)
     {
-        y = -x - z;
-        float horizPosition = 1.5f * x;
-        float vertPosition = Mathf.Sqrt(3.0f) * (x * 0.5f + y);
+        cubePosition.y = -cubePosition.x - cubePosition.z;
+        float horizPosition = 1.5f * cubePosition.x;
+        float vertPosition = Mathf.Sqrt(3.0f) * (cubePosition.x * 0.5f + cubePosition.y);
 
         return new Vector3(horizPosition, 0.0f, vertPosition);
     }

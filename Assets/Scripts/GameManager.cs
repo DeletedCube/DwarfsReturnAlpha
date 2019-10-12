@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
     //если соседсого тайла нет и он используется(схожен) и его сторона совпадает
     bool IsSidesEqual(Turn.Side _hexSide, HexTile _neighborHex)
     {
-        return (_neighborHex != null) && _neighborHex.Used && (_hexSide == _neighborHex.Side);
+        return (_neighborHex != null) && _neighborHex.isEmptyHex && (_hexSide == _neighborHex.Side);
     }
 
 }
